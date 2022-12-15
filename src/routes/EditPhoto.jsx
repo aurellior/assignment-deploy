@@ -32,7 +32,12 @@ const EditPhoto = () => {
 
     fetch(`https://gallery-app-server.vercel.app/photos/${id}`)
       .then((response) => response.json())
-      .then((data) => (setImageUrl(data.imageUrl), setCaptions(data.captions)));
+      .then((json) => {
+        console.log(json);
+        setCaptions(json.captions);
+        setImageUrl(json.imageUrl);
+        setLoading(false);
+      });
 
     setLoading(false);
   }, [id]);
