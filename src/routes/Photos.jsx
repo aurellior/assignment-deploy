@@ -28,7 +28,7 @@ const Photos = () => {
         setPhotos(data);
       });
     setLoading(false);
-  }, [sort, submited]);
+  }, [sort, submited, search]);
 
   useEffect(() => {
     setLoading(true);
