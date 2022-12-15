@@ -13,20 +13,17 @@ const EditPhoto = () => {
   const editPhoto = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-      `https://gallery-app-server.vercel.app/photos/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          imageUrl: `${imageUrl}`,
-          captions: `${captions}`,
-          updatedAt: Date().toString(),
-        }),
-      }
-    );
+    await fetch(`https://gallery-app-server.vercel.app/photos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        imageUrl: `${imageUrl}`,
+        captions: `${captions}`,
+        updatedAt: Date().toString(),
+      }),
+    });
     navigate("/photos");
   };
 

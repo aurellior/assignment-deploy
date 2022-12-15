@@ -12,22 +12,19 @@ const AddPhoto = () => {
     e.preventDefault();
 
     if (secret === "password") {
-      const response = await fetch(
-        "https://gallery-app-server.vercel.app/photos",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            imageUrl: `${imageUrl}`,
-            captions: `${captions}`,
-            createdAt: Date().toString(),
-            updatedAt: Date().toString(),
-            secret: secret,
-          }),
-        }
-      );
+      await fetch("https://gallery-app-server.vercel.app/photos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          imageUrl: `${imageUrl}`,
+          captions: `${captions}`,
+          createdAt: Date().toString(),
+          updatedAt: Date().toString(),
+          secret: secret,
+        }),
+      });
       navigate("/photos");
     } else {
       setError("You are not authorized");
